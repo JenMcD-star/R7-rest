@@ -14,8 +14,15 @@ class Api::V1::FactsController < ApplicationController
   
     # GET /members/:member_id/facts/:id
     def show
-      # your code goes here
-    end
+        if
+          @fact = Fact.find(params[:id])
+          render json: {fact: @fact}
+      else
+          render json: { error:
+            "Unable to find fact: #{@member.errors.full_messages.to_sentence}"},
+            status: 404
+        end      
+      end
   
     # POST /members/:member_id/facts
     def create
@@ -37,7 +44,9 @@ class Api::V1::FactsController < ApplicationController
   
     # DELETE /members/:member_id/facts/:id
     def destroy
-      # your code goes here
+        @fact = Fact.find(params[:id])
+        @fact.destroy
+        render json: { message: 'Fact successfully deleted.'}, status: 200
     end
   
     private

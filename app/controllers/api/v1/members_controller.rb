@@ -37,13 +37,6 @@ class Api::V1::MembersController < ApplicationController
   
     # PUT /members/:id
     def update
-      if check_access
-        
-      end
-    end
-
-
-    def update
         if check_access
         @member = Member.find(params[:id])
         if @member.update(member_params)
