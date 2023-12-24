@@ -1,3 +1,3 @@
-class ApplicationController < ActionController::API
-    include ExceptionHandler
+class ApplicationController < ActionController::Base
+  include ExceptionHandler
 end

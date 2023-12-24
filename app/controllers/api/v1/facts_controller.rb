@@ -39,8 +39,19 @@ class Api::V1::FactsController < ApplicationController
   
     # PUT /members/:member_id/facts/:id
     def update
-      # your code goes here
+      @fact = Fact.find(params[:id])
+      if @fact.update(fact_params)
+          render json: @fact, status: 201
+
+      else
+          render json: { error:
+          "Unable to edit fact #{@fact.errors.full_messages.to_sentence}"},
+          status: 400
+      end
     end
+
+
+    
   
     # DELETE /members/:member_id/facts/:id
     def destroy
