@@ -107,15 +107,8 @@ paths:
       responses:
         '200':
           description: successful
-  "/api/v1/members/{member_id}":
-    get:
-      summary: list member
-      tags:
-      - Member
-      responses:
-        '200':
-          description: successful
-    post:
+  "/api/v1/members":
+     post:
       summary: create member
       tags:
       - Member
@@ -137,6 +130,14 @@ paths:
                 last_name:
                   type: string
         required: true
+  "/api/v1/members/{member_id}":
+    get:
+      summary: list member
+      tags:
+      - Member
+      responses:
+        '200':
+          description: successful
   "/api/v1/members/{member_id}":
     parameters:
     - name: member_id
